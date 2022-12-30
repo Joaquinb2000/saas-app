@@ -1,4 +1,5 @@
 module ApplicationHelper
+  require "bootstrap_icons"
   ALERT_TYPES = [:success, :info, :warning, :danger] unless const_defined?(:ALERT_TYPES)
 
   def bootstrap_flash(options = {})
@@ -26,5 +27,10 @@ module ApplicationHelper
       end
     end
     flash_messages.join("\n").html_safe
+  end
+
+  def bootstrap_icon(name, options={})
+    icon = BootstrapIcons::BootstrapIcon.new(name, options)
+    content_tag(:svg, icon.path.html_safe, icon.options)
   end
 end
