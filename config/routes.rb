@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :members
   get 'home/index'
-  root :to => "home#index"
   
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do
@@ -16,4 +15,5 @@ Rails.application.routes.draw do
   }
 
 
+  root :to => "home#index"
 end
