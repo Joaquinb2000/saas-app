@@ -1,13 +1,13 @@
-# fly.toml file generated for joaquin-saas-app on 2022-12-30T00:06:24-04:00
+# fly.toml file generated for jb-saas-app on 2022-12-30T19:09:39-04:00
 
-app = "joaquin-saas-app"
+app = "jb-saas-app"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [build]
   [build.args]
-    BUILD_COMMAND = "bin/rails fly:build"
+    BUILD_COMMAND = "bundle exec rails assets:precompile ASSET_COMPILE=1"
     SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
