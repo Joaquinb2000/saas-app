@@ -1,10 +1,10 @@
-<h1> Create Password %></h1>
+<h1> Create Password </h1>
 
 <%= form_for(resource, as: resource_name, url: update_user_confirmation_path,
                                             html: { method: :put }) do |f| %>
   <%= bootstrap_devise_error_messages! %>
 
-    <%= hiddent_field_tag :confiramtion_token, @confirmation_token %>
+    <%= hidden_field_tag :confirmation_token, @confirmation_token %>
   <div class="form-group">
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>

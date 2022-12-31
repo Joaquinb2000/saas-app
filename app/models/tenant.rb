@@ -7,7 +7,7 @@ class Tenant < ApplicationRecord
 
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
-      tenant = Tenant.new(:tenant_params)
+      tenant = Tenant.new(tenant_params)
 
       if new_signups_not_permitted?(coupon_params)
 

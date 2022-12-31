@@ -9,26 +9,30 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 <% if user_signed_in?%>
-                <li>
-                    <%= bootstrap_icon "person-plus"%>
-                    <%= link_to "Invite a new user" , new_member_path  %>
+                <li >
+                    <%= link_to new_member_path, class:"align-center" do  %>
+                        <%= bootstrap_icon "person-plus"%>
+                        Invite a new user
+                    <% end %>
                 </li>
                 <% else %>
                 <li>
                     <a href="#">No bitches?</a>
                 </li>
+                <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
-                    <li>
-                        <%= link_to destroy_user_session, method:delete do %>
-                            <button type="button" class="btn btn-default">Login</button>
-                        <%end%>
-
-                    </li>
-                    <li>
-                        <%= bootstrap_icon "person-circle"%>
-                        <% link_to current_user.email, "#"%>
+                    <li role="presentation" class="drop-down">
+                        <a class="dropdown-toggle align-center" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <%= bootstrap_icon "person-circle"%>
+                            <%= current_user.email %> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                        <%= link_to "Logout",destroy_user_session_path, method: :delete%>
+                            </li>
+                        </ul>
                     </li>
                 <% else %>
                     <li>
