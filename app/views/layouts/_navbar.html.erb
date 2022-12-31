@@ -8,14 +8,14 @@
         <%= link_to "SaasApp", root_path, class:"navbar-brand" %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
+                <% if user_signed_in?%>
                 <li>
-                    <%= link_to "Link1" , "/path1" %>
+                    <%= bootstrap_icon "person-plus"%>
+                    <%= link_to "Invite a new user" , new_member_path  %>
                 </li>
+                <% else %>
                 <li>
-                    <%= link_to "Link2" , "/path2" %>
-                </li>
-                <li>
-                    <%= link_to "Link3" , "/path3" %>
+                    <a href="#">No bitches?</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -27,7 +27,7 @@
 
                     </li>
                     <li>
-                        <%= bootstrap_icon("person-circle")%>
+                        <%= bootstrap_icon "person-circle"%>
                         <% link_to current_user.email, "#"%>
                     </li>
                 <% else %>
