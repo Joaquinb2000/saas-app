@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <h1>Welcome to the project management application</h1>
+    <p>Need to organize or manage your project? Take a look at our great plans!</p>
+</div>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-4 col-md-offset-2">
+            <div class="panel panel-success">
+                <div class="panel-heading text-center">
+                    <h2>Free Plan</h2>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li><strong>Price: Free</strong></li>
+                        <li>Responsive design</li>
+                        <li>Access Anywhere</li>
+                        <li>1 Project</li>
+                    </ul>
+                    <div class="text-center">
+                        <%= link_to new_user_registration_path do %>
+                            <button type="button" class="btn btn-primary btn-lg mt-2 text-center">Sign up!</button>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h2>Premium Plan</h2>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li><strong>Price: $10</strong></li>
+                        <li>Responsive design</li>
+                        <li>Access Anywhere</li>
+                        <li>Unlimited Projects</li>
+                    </ul>
+                    <div class="text-center">
+                        <%= link_to new_user_registration_path do %>
+                            <button type="button" class="btn btn-primary btn-lg mt-2 text-center">Sign up!</button>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tenants do
+    resources :projects, except: [ :index ]
+  end
   resources :members
   get 'home/index'
 
