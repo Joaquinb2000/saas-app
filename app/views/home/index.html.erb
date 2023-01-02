@@ -1,18 +1,24 @@
 <% if !user_signed_in? %>
     <%= render "welcome_banner" %>
 <% else %>
+
     <h1>
         Organization: <strong> <%= @tenant.name %> </strong>
     </h1>
-    <%= link_to new_tenant_project_path(@tenant.id) do %>
-        <button class="btn btn-primary align-center">
-            <%= bootstrap_icon "plus-circle" %> New Project
-        </button>
+    <% if @tenant.can_create_projects? %>
+        <%= link_to new_tenant_project_path(@tenant.id) do %>
+            <button class="btn btn-primary align-center">
+                <%= bootstrap_icon "plus-circle" %> New Project
+            </button>
+        <% end %>
     <% end %>
-    <h2>
-        Projects:
-    </h2>
-    <div class="row">
-        <%= render @projects %>
-    <div>
+    <% if @projects.length == 0 %>
+        <h2 class="text-center"> You have no projects </h2>
+    <% else %>
+        <h2>Projects:</h2>
+        <div class="row">
+            <%= render @projects %>
+        <div>
+    <% end %>
+
 <% end %>

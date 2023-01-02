@@ -33,4 +33,8 @@ module ApplicationHelper
     icon = BootstrapIcons::BootstrapIcon.new(name, options)
     content_tag(:svg, icon.path.html_safe, icon.options)
   end
+
+  def tenant_name(tenant_id)
+    Tenant.find(tenant_id).name
+  end
 end
