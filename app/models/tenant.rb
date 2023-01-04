@@ -3,6 +3,8 @@ class Tenant < ApplicationRecord
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_one :payment
+  accepts_nested_attributes_for :payment
 
   validates :name, uniqueness: true, presence: true
 
@@ -49,6 +51,4 @@ class Tenant < ApplicationRecord
       Member.create_org_admin(user)
       #
     end
-
-
 end

@@ -30,6 +30,15 @@ gem 'bootstrap-icons'
 
 gem 'bootstrap-datepicker-rails'
 
+gem 'stripe'
+
+gem 'aws-sdk-s3', require: false
+
+# Fix warning: already initialized constant Net::ProtocRetryError
+gem "net-http"
+
+
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -71,6 +80,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

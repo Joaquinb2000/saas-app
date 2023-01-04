@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_02_161314) do
+ActiveRecord::Schema.define(version: 2023_01_03_232902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artifacts", force: :cascade do |t|
+    t.string "name"
+    t.string "key"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_artifacts_on_project_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.bigint "tenant_id"
@@ -24,6 +33,15 @@ ActiveRecord::Schema.define(version: 2023_01_02_161314) do
     t.datetime "updated_at", null: false
     t.index ["tenant_id"], name: "index_members_on_tenant_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "email"
+    t.string "token"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_payments_on_tenant_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -81,8 +99,10 @@ ActiveRecord::Schema.define(version: 2023_01_02_161314) do
     t.index ["tenant_id"], name: "index_users_on_tenant_id"
   end
 
+  add_foreign_key "artifacts", "projects"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
+  add_foreign_key "payments", "tenants"
   add_foreign_key "projects", "tenants"
   add_foreign_key "tenants", "tenants"
 end

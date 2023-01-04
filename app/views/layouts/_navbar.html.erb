@@ -7,20 +7,16 @@
         </button>
         <%= link_to "SaasApp", root_path, class:"navbar-brand" %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <% if user_signed_in?%>
             <ul class="nav navbar-nav">
-                <% if user_signed_in?%>
                 <li >
                     <%= link_to new_member_path, class:"align-center" do  %>
                         <%= bootstrap_icon "person-plus"%>
                         Invite a new user
                     <% end %>
                 </li>
-                <% else %>
-                <li>
-                    <a href="#">No bitches?</a>
-                </li>
-                <% end %>
             </ul>
+            <% end %>
             <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
                     <li role="presentation" class="drop-down">
