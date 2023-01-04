@@ -1,16 +1,21 @@
-<div class="navbar navbar-default">
-    <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <%= link_to "SaasApp", root_path, class:"navbar-brand" %>
+<nav class="navbar navbar-default ">
+    <div class="container-fluid margin-x">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to root_path, class:"navbar-brand align-center" do %>
+                <%= bootstrap_icon("building", width: 30, height: 30) %>
+                SaasApp
+            <% end %>
+        </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <% if user_signed_in?%>
+            <% if user_signed_in? && current_user.is_admin?%>
             <ul class="nav navbar-nav">
                 <li >
-                    <%= link_to new_member_path, class:"align-center" do  %>
+                    <%= link_to new_member_path, class:"align-center special-btn" do  %>
                         <%= bootstrap_icon "person-plus"%>
                         Invite a new user
                     <% end %>
@@ -26,7 +31,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                        <%= link_to "Logout",destroy_user_session_path, method: :delete%>
+                                <%= link_to "Logout",destroy_user_session_path, method: :delete%>
+                            </li>
+                            <li>
+                                <%= link_to "Edit plan", edit_plan_path%>
                             </li>
                         </ul>
                     </li>
@@ -34,7 +42,7 @@
                     <li>
                         <%= link_to new_user_session_path do %>
                             <button type="button" class="btn btn-default">Login</button>
-                        <%end%>
+                        <% end %>
                     </li>
                     <li>
                         <%= link_to new_user_registration_path do %>
@@ -45,4 +53,4 @@
             </ul>
         </div>
     </div>
-</div>
+</nav>

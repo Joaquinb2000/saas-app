@@ -16,7 +16,7 @@ class RegistrationsController < ::Devise::RegistrationsController
       # make any changes
 
     tenant_params = sign_up_params_tenant
-    user_params   = sign_up_params_user
+    user_params   = sign_up_params_user.merge({ is_admin: true })
     coupon_params = sign_up_params_coupon
 
     sign_out_session!

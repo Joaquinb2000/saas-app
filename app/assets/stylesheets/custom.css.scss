@@ -8,3 +8,22 @@
 svg{
     margin-right: 5px;
 }
+
+.navbar-brand{
+    font-size: 2rem;
+}
+
+.margin-x{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.special-btn{
+    color: white !important;
+    background-color: #4cae4c ;
+    border-radius: 10px;
+}
+
+.special-btn:hover, .special-btn:focus{
+    background-color: #449d44 !important;
+}
