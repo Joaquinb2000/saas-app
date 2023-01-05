@@ -5,6 +5,8 @@ class Project < ApplicationRecord
   validates_presence_of :title, :details, :expected_completion_date
   validate :free_plan_can_only_have_one_project
   has_many :artifacts, dependent: :destroy
+  has_many :user_projects
+  has_many :users, through: :user_projects
 
   def free_plan_can_only_have_one_project
     organization = tenant
@@ -16,9 +18,17 @@ class Project < ApplicationRecord
   def self.by_user_plan_and_tenant(tenant_id, user)
     tenant = user.tenants.find(tenant_id)
     if tenant.plan == 'premium'
-      tenant.projects
+      if user.is_admin?
+        tenant.projects
+      else
+        user.projects.where(tenant_id: tenant_id)
+      end
     else
-      tenant.projects.order(:id).limit(1)
+      if user.is_admin?
+        tenant.projects.order(:id).limit(1)
+      else
+        user.projects.where(tenant_id: tenant.id).order(:id).limit(1)
+      end
     end
   end
 end

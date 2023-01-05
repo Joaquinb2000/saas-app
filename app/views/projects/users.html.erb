@@ -1,0 +1,58 @@
+<div class="page-header">
+    <h3>Users for Project <%= @project.title %></h3>
+    <strong>(Other than yourself)</strong>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th><%= t '.actions', :default => t("helpers.actions")%></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @project_users.each do |project_user|%>
+            <tr>
+                <td><%= project_user.email %></td>
+                <td>
+                    <% if !project_user.is_admin? %>
+                        <%= link_to "Remove", user_project_path(id: project_user.user_projects.find_by(project_id: @project.id),
+                            tenant_id: @project.tenant_id),
+                            method: :delete,
+                            data: { confirm: "User will be removed from project. Are you sure?" },
+                            class: "btn btn-danger"%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br><br><br>
+
+<h3>Users to add to Project: <%= @project.title %></h3>
+<strong>(Admins don't need to be added)</strong>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th><%=t '.actions', :default => t("helpers.actions")%></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @other_users.each do |other_user|%>
+            <tr>
+                <td><%= other_user.email %></td>
+                <td>
+                    <%= link_to "Add", add_user_tenant_project_path(id: @project.id, tenant_id: @project.tenant_id, user_id: other_user.id),
+                        method: :put,
+                        class: "btn btn-primary"%>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to "Back", tenant_project_path(id: @project.id, tenant_id: @project.tenant_id), class: 'btn btn-default'%>
+

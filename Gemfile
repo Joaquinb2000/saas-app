@@ -32,7 +32,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'stripe'
 
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3'
 
 # Fix warning: already initialized constant Net::ProtocRetryError
 gem "net-http"

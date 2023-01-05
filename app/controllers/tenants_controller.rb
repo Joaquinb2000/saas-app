@@ -5,7 +5,6 @@ class TenantsController < ApplicationController
 
   def update
     Tenant.transaction do
-      byebug
       if @tenant.update(tenant_params)
         if @tenant.plan == "premium" && @tenant.payment.blank?
           @payment = Payment.new(token: params[:payment][:token],
