@@ -86,3 +86,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-session_store', '~> 1.1.3'
+
+gem "dockerfile-rails", ">= 1.5", :group => :development

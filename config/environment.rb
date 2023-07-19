@@ -12,7 +12,7 @@ if ENV['ASSET_COMPILE'].blank?
   ActionMailer::Base.smtp_settings = {
     :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
     :password => Rails.application.credentials.mailer[:api_key], # This is the secret sendgrid API key which was issued during API key creation
-    :domain => 'yourdomain.com',
+    :domain => 'jb-saas-app.fly.dev/',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
